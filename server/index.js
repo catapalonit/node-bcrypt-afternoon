@@ -33,5 +33,8 @@ app.get('/auth/logout', authController.logout);
 app.get('/api/treasure/dragon', treasureController.dragonTreasure);
 app.get('/api/treasure/user', authMiddleware.usersOnly, treasureController.getUserTreasure)
 
+app.post('/api/treasure/user', authMiddleware.usersOnly, treasureController.addUserTreasure)
+
+app.get('/api/treasure/all', authMiddleware.usersOnly, authMiddleware.adminsOnly, treasureController.getAllTreasure)
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
